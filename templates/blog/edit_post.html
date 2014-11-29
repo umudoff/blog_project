@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Edit Post</title>
+</head>
+<body>
+	<form id="edit_post_form" method="post" action="/blog/edit_post/{{pos_id}}/" enctype="multipart/form-data">
+		{% csrf_token %}
+
+
+        {% for field in form.visible_fields %}
+
+			     	{% if field.name == "fk_CreatedBy" %}
+                {{ field.as_hidden }}
+				    {% else %}
+
+						{{field.errors}}
+
+            {{field.help_text}} <br/>
+            {{field}}
+						{% endif %}
+            <hr>
+        {% endfor %}
+
+				<input type="submit" name="submit" value="Edit" />
+
+	</form>
+</body>
+</html>

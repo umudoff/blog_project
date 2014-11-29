@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Rango</title>
+    </head>
+
+    <body>
+
+        hello world! <strong>{{ boldmessage }}</strong><br />
+        <a href="/blog/register/">Register Here</a> <br />
+        <p><a href="/blog/login/">Login</a></p>
+
+
+
+
+
+        {% if user.is_authenticated %}
+        <a href="/blog/restricted/">Restricted Page</a><br />
+        <a href="/blog/logout/">Logout</a><br />
+        {% else %}
+        <a href="/blog/register/">Register Here</a><br />
+        <a href="/blog/login/">Login</a><br />
+        {% endif %}
+       
+       <p><a href="/blog/posts/"> Go to the List of the posts</a> </p>
+
+
+    </body>
+
+</html>

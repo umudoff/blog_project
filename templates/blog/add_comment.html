@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Comment </title>
+</head>
+<body>
+  <form id="add_comment" method="post" action="/blog/posts/{{pos_id}}/" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in comment_form.visible_fields %}
+     {% if field.name == "postID" or field.name == "fk_UserID" %}
+      {{ field.as_hidden }}
+      {% else %}
+    {{ field.errors }}
+
+    {{ field.help_text }}<br/>
+
+    {{ field }}<br/>
+    {% endif %}
+    {% endfor %}
+
+    <input type="submit" name="submit"
+                 value="Add"/>
+  </form>
+</body>
+</html>

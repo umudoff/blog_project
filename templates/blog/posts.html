@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Post List</title>
+    </head>
+
+    <body>
+
+    {% for post in posts_list %}
+      <p>
+
+       <a href="/blog/edit_post/{{post.id}}/"> {{post.title}}</a>
+
+      </p>
+      <h4>Description :</h4>
+      <p>{{ post.body}}</p>
+      <a href="{{post.id}}">Add comment</a>
+      <h4> Comments for the post </h4>
+       {% for comm in comments_list %}
+
+           {% if comm.postID.id == post.id %}
+               <p> <a href="/blog/edit_comment/{{comm.id}}">{{comm.description}} </a> </p>
+               <p>Commented By: {{comm.fk_UserID.username}}</p>
+
+           {% endif%}
+       {% endfor %}
+      <hr>
+    {% endfor %}
+
+    <br />
+    <a href="/blog/posts/add_post/"><h4>Add Post</h4></a>
+
+
+    </body>
+
+</html>
